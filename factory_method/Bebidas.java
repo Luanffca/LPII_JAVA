@@ -1,35 +1,40 @@
-public class Bebidas implements Tipo {
 
+
+public class Bebidas implements Produtos {
     private String nome;
-    private String data_validade;
+    private String validade;
 
-    public Bebidas(String nome, String data_validade){
+    Bebidas(String nome, String validade ){ 
         this.nome = nome;
-        this.data_validade = data_validade;
+        this.validade = validade;
     }
 
-    public void update(String nome) {
+    public static Bebidas of(String nome, String validade) {
+        return new Bebidas(nome, validade);
+    }
+
+    public void update(String nome, String validade) {
         this.nome = nome;
-        this.data_validade = data_validade;
-    } 
+        this.validade = validade;
+    }
 
     public String nome() {
         return nome;
     }
 
-    public String data(){
-        return this.data_validade;
+    public String validade() {
+        return validade;
+    }
+    
+    @Override
+    public void Comprando(String customerName) {
+        System.out.println( customerName + " esta comprando " + nome() + " com garantia " + validade());
     }
 
     @Override
-    public Type type() {
-        // TODO Auto-generated method stub
-        return Type.BEBIDAS;
+    public void Comprado() {
+        // TODO 
+        System.out.println( nome() + " comprado "); 
     }
-
-    @Override
-    public void Comprar(String nome) {
-        // TODO Auto-generated method stub
-        System.out.println( nome  + " esta comprando " + nome());
-    }
+    
 }

@@ -1,14 +1,21 @@
-public class Eletronicos implements Tipo{
-    private String nome;
-    private String garantia;
 
-    public Eletronicos(String nome, String garantia){
+public class Eletronicos implements Produtos{
+    private String nome;
+    private String data_garantia;
+
+    Eletronicos(String nome, String data_garantia){
         this.nome = nome;
-        this.garantia = garantia;
+        this.data_garantia = data_garantia;
     }
-    public void update(String nome) {
+
+    public static Eletronicos of(String nome, String data_garantia) {
+        return new Eletronicos(nome, data_garantia);
+        
+    }
+    public void update(String nome, String data_garantia) {
         this.nome = nome;
-        this.garantia = garantia;
+        this.data_garantia = data_garantia;
+        
     }
 
     public String nome() {
@@ -16,17 +23,19 @@ public class Eletronicos implements Tipo{
     }
 
     public String data(){
-        return this.garantia;
-    }
-    @Override
-    public Type type() {
-        // TODO Auto-generated method stub
-        return Type.ELETRONICOS;
+        return data_garantia;
     }
 
     @Override
-    public void Comprar(String nome) {
-        // TODO Auto-generated method stub
-        System.out.println( nome  + " esta comprando " + nome());
-    } 
+    public void Comprando(String customerName) {
+        System.out.println( customerName + "esta comprando " + nome() + " com garantia " + data());
+        
+    }
+    @Override
+    public void Comprado() {
+        // TODO 
+        System.out.println( nome() + " comprado ");
+        
+    }
+    
 }
