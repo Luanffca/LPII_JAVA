@@ -75,13 +75,14 @@ public class Sala {
 
     private void initializejogadores(List<Jogador> jogadores) {
         this.Jogadores_a_escolha = new ArrayList<>(
-                jogadores.stream().map(p -> p.getID_jogado()).collect(Collectors.toList()));
+                jogadores.stream().map(p -> p.getID_jogado()).collect(Collectors.toList())
+        );
     }
 
     public void toSorting() {
 
         if (status != Status.WAITING) {
-            throw new IllegalStateException("Room is not waiting");
+            throw new IllegalStateException("O quarto não está esperando");
         }
 
         shufflecartoes_a_escolha();
@@ -92,7 +93,7 @@ public class Sala {
     private void shufflecartoes_a_escolha() {
 
         if (jogadores.size() < Configuracao_de_Acesso.getMIN_JOGADORES()) {
-            throw new RuntimeException("'min jogadores' can't be less than four!");
+            throw new RuntimeException("min jogadores' não pode ser inferior a quatro!");
         }
 
         for (final Valor_Cartao cardValue : Valor_Cartao.values()) {
